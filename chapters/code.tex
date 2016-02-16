@@ -1,0 +1,66 @@
+
+\chapter{Code}
+
+\iffalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The complete `minted` references can be found at:
+% http://ctan.mirror.garr.it/mirrors/CTAN/macros/latex/contrib/minted/minted.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the following is an example to include a source entirely
+\begin{adjustwidth}{-4cm}{0cm}
+    \inputminted{haskell}{chapters/code/corecursion.hs}
+\end{adjustwidth}
+
+% to `\inputminted` can be given some options
+\inputminted[
+    mathescape,
+    linenos,
+    %numbersep=5pt,
+    %gobble=2,
+    frame=lines,
+    framesep=2mm,
+    breaklines,
+    firstline=1,
+    lastline=16
+    ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
+
+% the following is an example of a chunk of code
+\begin{minted}{python}
+    catalan_matrix = Matrix([
+        [1,0,0,0,0,0], 
+        [1,1,0,0,0,0], 
+        [2,2,1,0,0,0], 
+        [5,5,3,1,0,0], 
+        [14,14,9,4,1,0], 
+        [42,42,28,14,5,1]])
+    alpha = 2
+    bound = 2**alpha
+    pc = catalan_matrix[:bound, :bound]
+    pc = pc.applyfunc(lambda c: c % 2)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+\end{minted}
+
+% the following is an example of inline code
+\mintinline{python}|build_modular_catalan|
+
+% it is possible to define delimiters to escape a chunk of code
+% to be interpreted as normal TeX code:
+\begin{minted}[escapeinside=||]{haskell}
+    ones = 1:ones 
+         |$\triangleq_{ones}$| |$1_{0}$|:|$1_{1}$|:ones
+         |$\triangleq_{ones}$| |$1_{0}$|:|$1_{1}$|:|$1_{2}$|:ones
+         = 0|$_{0}$| : map (+1) (0 : map (+1) (0 : map (+1) nats))
+\end{minted}
+\fi
