@@ -44,3 +44,42 @@ and, provided that $x\neq0$, we get back to the binary representation of $y$:
 \begin{align}
     y &= \sum_{k=0}^{\floor{\log_{2}{y}}}{r_{k}2^{k}}
 \end{align}
+
+
+\section{Exponentiation}
+
+Using previous section about multiplication as a track to follow, 
+we do the same steps to derive exponentiation of two integers $x$ and $y$:
+\begin{displaymath}
+    x^{y} = x^{\left(\frac{y}{2}\right)^{2}} = \left(x^{\left(\frac{y}{2}\right)}\right)^{2} 
+\end{displaymath}
+again proceed by cases respect the parity of $y$:
+\begin{displaymath}
+    \begin{split}
+        x^{y} &= \varsubsdevice{\left(x^{q}\right)^{2}}{y=2q}\\
+        x^{y} &= \varsubsdevice{\left(x^{\frac{2q+1}{2}}\right)^{2}}{y=2q+1}
+               = \varsubsdevice{\left(x^{q}\right)^{2}\,x}{y=2q+1}\\
+    \end{split}
+\end{displaymath}
+introducing bases for the recursion and abstracting into one line we have:
+\begin{displaymath}
+    \begin{split}
+        x^{0} &= 1\\
+        x^{1} &= x\\
+        x^{y} &= \varsubsdevice{\left(x^{q}\right)^{2}\,x^{r}}{y=2q+r}\\
+    \end{split}
+\end{displaymath}
+Similarly, do manual unfolding:
+\begin{displaymath}
+    \begin{split}
+        x^{y} &= \varsubsdevice{\left(x^{q_{0}}\right)^{2}\,x^{r_{0}}}{y=2q_{0}+r_{0}}\\
+              &= \varsubsdevice{\left(\left(x^{q_{1}}\right)^{2}\,x^{r_{1}}\right)^{2}\,x^{r_{0}}}{q_{0}=2q_{1}+r_{1}}\\
+              &= \varsubsdevice{\left(\left(\left(x^{q_{2}}\right)^{2}\,x^{r_{2}}\right)^{2}\,x^{r_{1}} \right)^{2}\,x^{r_{0}}}
+                    {q_{1}=2q_{2}+r_{2}}\\
+              &= \varsubsdevice{\left(x^{q_{2}}\right)^{2^{3}}\,x^{2^{2}r_{2}}\,x^{2r_{1}}\,x^{r_{0}}}{q_{1}=2q_{2}+r_{2}}\\
+    \end{split}
+\end{displaymath}
+as before, the unfolding process stops exactly when $q_{\floor{\log_{2}{y}}}=0$, therefore:
+\begin{align}
+    x^{y} &= x^{\sum_{k=0}^{\floor{\log_{2}{y}}}{r_{k}2^{k}}}
+\end{align}
