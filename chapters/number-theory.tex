@@ -1,0 +1,46 @@
+
+\chapter{Number theory}
+
+\section{Multiply}
+
+In order to multiply two integers $x$ and $y$ we can derive a procedure
+by simple manipulation:
+\begin{displaymath}
+    x\,y = 2x\,\frac{y}{2} = 2\left(x\,\frac{y}{2}\right)
+\end{displaymath}
+this allows us to build a recursive definition. To accomplish that, observe
+that $2x$ is always an integer; on the contrary, $\frac{y}{2}$ is an integer if $y$ is even.
+Therefore we have to split the definition by cases on the parity of $y$:
+\begin{align}
+    x\,y &= \varsubsdevice{2(x\,q)}{y=2q}\\
+    x\,y &= \varsubsdevice{2\left(x\,\frac{2q+1}{2}\right)}{y=2q+1}            
+            = \varsubsdevice{2\left(x\,q\right)+x}{y=2q+1}
+\end{align}
+adding base cases for the recursion, as many as remainder classes of $\equiv_{2}$, and 
+abstracting the previous definition we get:
+\begin{align}
+    x\,0 &= 0\\
+    x\,1 &= x\\
+    x\,y &= \varsubsdevice{2\left(x\,q\right)+x\,r}{y=2q+r}
+\end{align}
+rewriting variable substitution device $\varsubsdevice{\ldots}{\ldots}$ with pattern matching as in functional
+programming languages we get:
+\begin{align}
+    x\,0 &= 0\\
+    x\,1 &= x\\
+    x\,(2\,q+r) &= 2\left(x\,q\right)+x\,r
+\end{align}
+Using previous derivation, we can manually unfold a generic product:
+\begin{align}
+    x\,y &= \varsubsdevice{2\left(x\,q_{0}\right)+x\,r_{0}}{y=2q_{0}+r_{0}}\\
+         &= \varsubsdevice{2\left(2\left(x\,q_{1}\right)+x\,r_{1}\right)+x\,r_{0}}{q_{0}=2q_{1}+r_{1}}\\
+         &= \varsubsdevice{2\left(2\left(2\left(x\,q_{2}\right)+x\,r_{2}\right)+x\,r_{1}\right)+x\,r_{0}}{q_{1}=2q_{2}+r_{2}}
+\end{align}
+this process eventually terminates exactly when $q_{\floor{\log_{2}{y}}}=0$. Therefore:
+\begin{align}
+    x\,y &= x\,\sum_{k=0}^{\floor{\log_{2}{y}}}{r_{k}2^{k}}
+\end{align}
+and, provided that $x\neq0$, we get back to the binary representation of $y$:
+\begin{align}
+    y &= \sum_{k=0}^{\floor{\log_{2}{y}}}{r_{k}2^{k}}
+\end{align}
