@@ -1,18 +1,9 @@
 
-# A template for my own documents
+# scratchpad
 
-This folder holds a template for short document, ready
-to be compiled with `texlive`. It is modular and
-simple changes to configuration files allow generalization:
+This repo is a place to collect ideas and play with whatever is fun ;)
 
-  - change personal info within `preamble/newcommands.tex`
-  - customize document structure modifying file in `preamble` folder
-  - add your content in dedicated files under `chapters` folder
-    and add a corresponding `\input` command within `structure/chapters.tex`,
-    taking it apart in dedicated files for sections
-  - add your graphics and pictures within `gfx` folder   
+  - **April 11, 2016**: a prototype cryptoanalysis of the Vigenere chiper can be read in [this][vigenere] notebook.
 
-`Makefile` provides rules for pdf compilation, bibtex compilation
-and cleaning. Moreover, a rule for an initial `git add` command is
-provided.
+[vigenere]:http://nbviewer.jupyter.org/github/massimo-nocentini/scratchpad/blob/master/chapters/crypto/vigenere-cryptoanalysis.ipynb?flush_cache=true 
 
