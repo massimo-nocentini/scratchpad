@@ -5,6 +5,9 @@ localhost:
 presentation-make:
 	jupyter-nbconvert presentation-first-year.ipynb --to slides
 
+publish: presentation-make
+	cp presentation-first-year.slides.html ~/Developer/working-copies/massimo-nocentini.github.io/PhD/first-year-summary/talk.html
+
 presentation:
 	jupyter-nbconvert presentation-first-year.ipynb --to slides --post serve
 
