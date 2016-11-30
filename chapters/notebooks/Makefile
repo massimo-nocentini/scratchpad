@@ -1,6 +1,6 @@
 
 localhost:
-	PYTHONPATH=~/Developer/working-copies/programming-contests/competitive-programming/python-libs/ jupyter-notebook
+	PYTHONPATH=~/Developer/working-copies/programming-contests/competitive-programming/python-libs/ jupyter-notebook --port=5900 --ip=150.217.37.50
 
 presentation-make:
 	jupyter-nbconvert presentation-first-year.ipynb --to slides
